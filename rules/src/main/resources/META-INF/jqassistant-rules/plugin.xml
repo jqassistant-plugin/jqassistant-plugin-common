@@ -1,12 +1,12 @@
-<jqa:jqassistant-rules xmlns:jqa="http://www.buschmais.com/jqassistant/core/rule/schema/v1.4">
+<jqa:jqassistant-rules xmlns:jqa="http://schema.jqassistant.org/rule/v1.10">
 
-    <group id="jqassistant-contrib-plugin:Default">
-        <includeConstraint refId="jqassistant-contrib-plugin:*"/>
+    <group id="jqassistant-plugin-plugin:Default">
+        <includeConstraint refId="jqassistant-plugin-plugin:*"/>
     </group>
 
-    <constraint id="jqassistant-contrib-plugin:Neo4jUserFunctionsMustBeRegistered">
+    <constraint id="jqassistant-plugin-plugin:Neo4jUserFunctionsMustBeRegistered">
         <requiresConcept refId="neo4j:UserFunction"/>
-        <requiresConcept refId="jqassistant-contrib-plugin:PluginRegistersUserFunction"/>
+        <requiresConcept refId="jqassistant-plugin-plugin:PluginRegistersUserFunction"/>
         <description>Types declaring Neo4j user functions must be registered.</description>
         <cypher><![CDATA[
             MATCH
@@ -18,9 +18,9 @@
         ]]></cypher>
     </constraint>
 
-    <constraint id="jqassistant-contrib-plugin:Neo4jProceduresMustBeRegistered">
+    <constraint id="jqassistant-plugin-plugin:Neo4jProceduresMustBeRegistered">
         <requiresConcept refId="neo4j:Procedure"/>
-        <requiresConcept refId="jqassistant-contrib-plugin:PluginRegistersProcedure"/>
+        <requiresConcept refId="jqassistant-plugin-plugin:PluginRegistersProcedure"/>
         <description>Types declaring Neo4j procedures must be registered.</description>
         <cypher><![CDATA[
             MATCH
@@ -32,7 +32,7 @@
         ]]></cypher>
     </constraint>
 
-    <concept id="jqassistant-contrib-plugin:PluginDescriptor">
+    <concept id="jqassistant-plugin-plugin:PluginDescriptor">
         <description>Labels jQAssistant plugin descriptor files with `jQAssistant` and `PluginDescriptor`.</description>
         <cypher><![CDATA[
             MATCH
@@ -44,8 +44,8 @@
         ]]></cypher>
     </concept>
 
-    <concept id="jqassistant-contrib-plugin:PluginRegistersProcedure">
-        <requiresConcept refId="jqassistant-contrib-plugin:PluginDescriptor"/>
+    <concept id="jqassistant-plugin-plugin:PluginRegistersProcedure">
+        <requiresConcept refId="jqassistant-plugin-plugin:PluginDescriptor"/>
         <description>Creates a `REGISTERS` relation between all procedure class elements of the jQAssistant plugin
             descriptor to the matching Java type.
         </description>
@@ -67,8 +67,8 @@
         ]]></cypher>
     </concept>
 
-    <concept id="jqassistant-contrib-plugin:PluginRegistersUserFunction">
-        <requiresConcept refId="jqassistant-contrib-plugin:PluginDescriptor"/>
+    <concept id="jqassistant-plugin-plugin:PluginRegistersUserFunction">
+        <requiresConcept refId="jqassistant-plugin-plugin:PluginDescriptor"/>
         <description>Creates a `REGISTERS` relation between all function class elements of the jQAssistant plugin
             descriptor to the matching Java type.
         </description>

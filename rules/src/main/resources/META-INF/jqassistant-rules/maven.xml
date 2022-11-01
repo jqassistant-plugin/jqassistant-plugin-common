@@ -1,28 +1,28 @@
-<jqa:jqassistant-rules xmlns:jqa="http://www.buschmais.com/jqassistant/core/rule/schema/v1.4">
+<jqa:jqassistant-rules xmlns:jqa="http://schema.jqassistant.org/rule/v1.10">
 
-    <group id="jqassistant-contrib-maven:Default">
-        <includeConstraint refId="jqassistant-contrib-maven:*"/>
+    <group id="jqassistant-plugin-maven:Default">
+        <includeConstraint refId="jqassistant-plugin-maven:*"/>
     </group>
 
-    <constraint id="jqassistant-contrib-maven:GroupId">
-        <description>The groupId for jQAssistant contrib Maven projects must follow the pattern 'org.jqassistant.contrib.&lt;project&gt;'.</description>
+    <constraint id="jqassistant-plugin-maven:GroupId">
+        <description>The groupId for jQAssistant plugin Maven projects must follow the pattern 'org.jqassistant.plugin.&lt;project&gt;'.</description>
         <cypher><![CDATA[
             MATCH
               (project:Maven:Project)-[:CREATES]->(:Artifact)
             WHERE NOT
-              project.groupId =~ "org\\.jqassistant\\.contrib\\..*"
+              project.groupId = "org.jqassistant.plugin"
             RETURN
               project as InvalidProject
         ]]></cypher>
     </constraint>
 
-    <concept id="jqassistant-contrib-maven:ParentProject" severity="info">
-        <description>Labels all Maven projects which declare "org.jqassistant.contrib.common:parent" as parent module with "Parent".</description>
+    <concept id="jqassistant-plugin-maven:ParentProject" severity="info">
+        <description>Labels all Maven projects which declare "org.jqassistant.plugin:parent" as parent module with "Parent".</description>
         <cypher><![CDATA[
             MATCH
               (parent:Maven:Project)-[:HAS_PARENT]->(contribParent:Maven:Project)
             WHERE
-              contribParent.groupId="org.jqassistant.contrib.common"
+              contribParent.groupId="org.jqassistant.plugin"
               and contribParent.artifactId="parent"
             SET
               parent:Parent
@@ -31,9 +31,9 @@
         ]]></cypher>
     </concept>
 
-    <constraint id="jqassistant-contrib-maven:ParentProjectMustDefineUrl">
-        <requiresConcept refId="jqassistant-contrib-maven:ParentProject" />
-        <description>The project URL must be defined in the parent pom.xml of a contribution project.</description>
+    <constraint id="jqassistant-plugin-maven:ParentProjectMustDefineUrl">
+        <requiresConcept refId="jqassistant-plugin-maven:ParentProject" />
+        <description>The project URL must be defined in the parent pom.xml of a plugin project.</description>
         <cypher><![CDATA[
             MATCH
               (parent:Parent:Maven:Project)-[:HAS_MODEL]->(pom:Maven:Pom:Xml),
@@ -45,9 +45,9 @@
         ]]></cypher>
     </constraint>
 
-    <constraint id="jqassistant-contrib-maven:ParentProjectMustDefineScmSection">
-        <requiresConcept refId="jqassistant-contrib-maven:ParentProject" />
-        <description>A SCM section having both connection and developerConnection set to "scm:git:https://github.com/jqassistant-contrib/_repository-name_" must be specified in the parent pom.xml of a contribution project.</description>
+    <constraint id="jqassistant-plugin-maven:ParentProjectMustDefineScmSection">
+        <requiresConcept refId="jqassistant-plugin-maven:ParentProject" />
+        <description>A SCM section having both connection and developerConnection set to "scm:git:https://github.com/jqassistant-plugin/_repository-name_" must be specified in the parent pom.xml of a plugin project.</description>
         <cypher><![CDATA[
             MATCH
               (parent:Maven:Project:Parent)-[:HAS_MODEL]->(pom)
@@ -58,17 +58,17 @@
             WHERE
               scm is null
               or not (
-                scm.connection starts with "scm:git:https://github.com/jqassistant-contrib/"
-                and scm.developerConnection starts with "scm:git:https://github.com/jqassistant-contrib/"
+                scm.connection starts with "scm:git:https://github.com/jqassistant-plugin/"
+                and scm.developerConnection starts with "scm:git:https://github.com/jqassistant-plugin/"
               )
             RETURN
               parent
         ]]></cypher>
     </constraint>
 
-    <constraint id="jqassistant-contrib-maven:ParentProjectMustDefineDeveloper">
-        <requiresConcept refId="jqassistant-contrib-maven:ParentProject" />
-        <description>At least one developer must be specified in the "developers" section of the parent pom.xml of a contribution project.</description>
+    <constraint id="jqassistant-plugin-maven:ParentProjectMustDefineDeveloper">
+        <requiresConcept refId="jqassistant-plugin-maven:ParentProject" />
+        <description>At least one developer must be specified in the "developers" section of the parent pom.xml of a plugin project.</description>
         <cypher><![CDATA[
             MATCH
               (parent:Maven:Project:Parent)-[:HAS_MODEL]->(pom)
@@ -79,9 +79,9 @@
         ]]></cypher>
     </constraint>
 
-    <constraint id="jqassistant-contrib-maven:MavenModulesMustUseParentGroupId">
-        <requiresConcept refId="jqassistant-contrib-maven:ParentProject" />
-        <description>All Maven projects must define the same groupId as the parent of the contribution project.</description>
+    <constraint id="jqassistant-plugin-maven:MavenModulesMustUseParentGroupId">
+        <requiresConcept refId="jqassistant-plugin-maven:ParentProject" />
+        <description>All Maven projects must define the same groupId as the parent of the plugin project.</description>
         <cypher><![CDATA[
             MATCH
               (parent:Maven:Project:Parent),

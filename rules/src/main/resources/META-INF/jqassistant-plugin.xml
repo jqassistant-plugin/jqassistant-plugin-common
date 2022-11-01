@@ -1,5 +1,5 @@
-<v1:jqassistant-plugin xmlns:v1="http://www.buschmais.com/jqassistant/core/plugin/schema/v1.1" name="jQAssistant Contrib Rules">
-    <description>Provides rules for jQAssistant Contrib projects.</description>
+<v1:jqassistant-plugin xmlns:v1="http://schema.jqassistant.org/plugin/v1.10" name="jQAssistant Plugin Rules">
+    <description>Provides rules for jQAssistant plugin projects.</description>
     <rules>
         <resource>default.xml</resource>
         <resource>maven.xml</resource>

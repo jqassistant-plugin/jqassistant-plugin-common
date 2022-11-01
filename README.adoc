@@ -1,13 +1,13 @@
-= jQAssistant Contrib Common
+= jQAssistant Plugin Common
 
-This project provides the parent pom.xml for jQAssistant contribution projects:
+This project provides the parent pom.xml for jQAssistant plugin projects:
 
 [source,xml]
 ----
 <parent>
-    <groupId>org.jqassistant.contrib.common</groupId>
+    <groupId>org.jqassistant.plugin</groupId>
     <artifactId>parent</artifactId>
-    <version>${contrib.parent.version}</version>
+    <version>${plugin.parent.version}</version>
 </parent>
 ----
 

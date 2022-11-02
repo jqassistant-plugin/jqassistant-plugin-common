@@ -97,6 +97,12 @@
                 <scope>provided</scope>
             </dependency>
             <dependency>
+                <groupId>com.buschmais.jqassistant.core</groupId>
+                <artifactId>report</artifactId>
+                <version>${com.buschmais.jqassistant.version}</version>
+                <scope>provided</scope>
+            </dependency>
+            <dependency>
                 <groupId>com.buschmais.xo</groupId>
                 <artifactId>xo.api</artifactId>
                 <version>${com.buschmais.xo.version}</version>

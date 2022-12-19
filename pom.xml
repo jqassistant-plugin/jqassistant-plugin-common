@@ -23,6 +23,8 @@
         <org.slf4j.version>1.7.25</org.slf4j.version>
         <org.projectlombok.version>1.18.24</org.projectlombok.version>
         <maven.surefire.version>2.22.2</maven.surefire.version>
+        <lombok-maven-plugin.version>1.18.20.0</lombok-maven-plugin.version>
+        <maven.javadoc.version>3.4.0</maven.javadoc.version>
     </properties>
 
     <organization>
@@ -130,10 +132,21 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-javadoc-plugin</artifactId>
-                    <version>3.1.1</version>
+                    <version>${maven.javadoc.version}</version>
                     <configuration>
-                        <source>8</source>
+                        <encoding>UTF-8</encoding>
+                        <detectJavaApiLink>false</detectJavaApiLink>
+                        <doclint>none</doclint>
+                        <sourcepath>${project.build.directory}/generated-sources/delombok;${project.basedir}/src/main/java;${project.build.directory}/generated-sources/xjc</sourcepath>
                     </configuration>
+                    <executions>
+                        <execution>
+                            <id>attach-javadocs</id>
+                            <goals>
+                                <goal>jar</goal>
+                            </goals>
+                        </execution>
+                    </executions>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
@@ -205,6 +218,24 @@
                     <groupId>org.jacoco</groupId>
                     <artifactId>jacoco-maven-plugin</artifactId>
                     <version>0.8.5</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.projectlombok</groupId>
+                    <artifactId>lombok-maven-plugin</artifactId>
+                    <version>${lombok-maven-plugin.version}</version>
+                    <executions>
+                        <execution>
+                            <phase>generate-sources</phase>
+                            <goals>
+                                <goal>delombok</goal>
+                            </goals>
+                            <configuration>
+                                <skip>true</skip>
+                                <addOutputDirectory>false</addOutputDirectory>
+                                <sourceDirectory>${project.basedir}/src/main/java</sourceDirectory>
+                            </configuration>
+                        </execution>
+                    </executions>
                 </plugin>
             </plugins>
         </pluginManagement>

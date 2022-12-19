@@ -6,13 +6,15 @@
 
     <constraint id="jqassistant-plugin-package:PackagesMustHaveGroupIdPrefix">
         <requiresConcept refId="jqassistant-plugin-maven:ParentProject"/>
+        <requiresConcept refId="java:GeneratedType"/>
         <description>All package names used in a Maven project must start with the groupId.</description>
         <cypher><![CDATA[
             MATCH
               (project:Maven:Project)-[:CREATES]->(artifact:Artifact),
               (artifact)-[:CONTAINS]->(invalidPackage:Package)-[:CONTAINS]->(type:Type)
-            WHERE NOT
-              invalidPackage.fqn starts with project.groupId
+            WHERE
+              NOT invalidPackage.fqn starts with project.groupId AND
+              NOT type:Generated
             RETURN
               invalidPackage as InvalidPackage, project.groupId as GroupId, project.artifactId as ArtifactId, count(type) as TypesInPackage
         ]]></cypher>

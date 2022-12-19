@@ -141,8 +141,8 @@
             </dependency>
             <!-- jQA test dependencies -->
             <dependency>
-                <groupId>com.buschmais.jqassistant.neo4jserver</groupId>
-                <artifactId>neo4jv3</artifactId>
+                <groupId>com.buschmais.jqassistant.neo4j</groupId>
+                <artifactId>embedded</artifactId>
                 <version>${com.buschmais.jqassistant.version}</version>
                 <scope>test</scope>
             </dependency>
@@ -152,7 +152,7 @@
                 <type>test-jar</type>
                 <version>${com.buschmais.jqassistant.version}</version>
                 <scope>test</scope>
-            </dependency>           
+            </dependency>
             <dependency>
                 <groupId>com.buschmais.jqassistant.core</groupId>
                 <artifactId>analysis</artifactId>

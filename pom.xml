@@ -7,14 +7,14 @@
     <version>2.0.0-SNAPSHOT</version>
     <packaging>pom</packaging>
 
-    <name>jQAssistant Plugin Parent</name>
+    <name>jQAssistant Plugin Common Parent</name>
     <description>Parent POM for jQAssistant common modules.</description>
     <url>https://github.com/jqassistant-plugin/jqassistant-plugin-common</url>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <caffeine.version>2.8.4</caffeine.version>
-        <com.buschmais.jqassistant.version>2.0.0-M1</com.buschmais.jqassistant.version>
+        <com.buschmais.jqassistant.version>2.0.0-M3</com.buschmais.jqassistant.version>
         <com.buschmais.xo.version>2.0.0</com.buschmais.xo.version>
         <org.hamcrest.version>2.0.0.0</org.hamcrest.version>
         <org.junit.version>5.8.2</org.junit.version>
@@ -104,15 +104,19 @@
                                 <goal>scan</goal>
                                 <goal>analyze</goal>
                             </goals>
-                            <configuration>
-                                <warnOnSeverity>INFO</warnOnSeverity>
-                                <failOnSeverity>MAJOR</failOnSeverity>
-                                <rule>
-                                    <defaultConceptSeverity>INFO</defaultConceptSeverity>
-                                </rule>
-                            </configuration>
                         </execution>
                     </executions>
+                    <configuration>
+                        <yaml>
+                            jqassistant:
+                              analyze:
+                                report:
+                                  warn-on-severity: INFO
+                                  fail-on-severity: MAJOR
+                                rule:
+                                  default-concept-severity: INFO
+                        </yaml>
+                    </configuration>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>

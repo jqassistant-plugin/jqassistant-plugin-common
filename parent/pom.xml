@@ -40,18 +40,21 @@
                 <groupId>com.buschmais.jqassistant</groupId>
                 <artifactId>jqassistant-maven-plugin</artifactId>
                 <configuration>
-                    <scanProperties>
-                        <xml.file.include>/META-INF/jqassistant-plugin.xml</xml.file.include>
-                    </scanProperties>
-                    <groups>
-                        <group>jqassistant-plugin:Default</group>
-                    </groups>
+                    <yaml>
+                        jqassistant:
+                          analyze:
+                            groups:
+                              - jqassistant-plugin:Default
+                          scan:
+                            properties:
+                              xml.file.include: /META-INF/jqassistant-plugin.xml
+                    </yaml>
                 </configuration>
                 <dependencies>
                     <dependency>
                         <groupId>org.jqassistant.plugin</groupId>
                         <artifactId>rules</artifactId>
-                        <version>2.0.0-SNAPSHOT</version>
+                        <version>${project.version}</version>
                     </dependency>
                 </dependencies>
             </plugin>

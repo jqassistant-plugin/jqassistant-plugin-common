@@ -19,13 +19,14 @@
                 <groupId>com.buschmais.jqassistant</groupId>
                 <artifactId>jqassistant-maven-plugin</artifactId>
                 <configuration>
-                    <storeLifecycle>MODULE</storeLifecycle>
-                    <rulesDirectories>
-                        <rulesDirectory>${project.build.outputDirectory}/META-INF/jqassistant-rules</rulesDirectory>
-                    </rulesDirectories>
-                    <groups>
-                        <group>jqassistant-plugin:Default</group>
-                    </groups>
+                    <yaml>
+                        jqassistant:
+                          analyze:
+                            groups:
+                              - jqassistant-plugin:Default
+                          maven:
+                            reuse-store: false
+                    </yaml>
                 </configuration>
             </plugin>
         </plugins>

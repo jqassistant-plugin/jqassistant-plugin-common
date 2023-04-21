@@ -14,15 +14,15 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <caffeine.version>2.8.4</caffeine.version>
-        <com.buschmais.jqassistant.version>2.0.0-M3</com.buschmais.jqassistant.version>
-        <com.buschmais.xo.version>2.0.0</com.buschmais.xo.version>
+        <com.buschmais.jqassistant.version>2.0.0</com.buschmais.jqassistant.version>
+        <com.buschmais.xo.version>2.1.1</com.buschmais.xo.version>
         <org.hamcrest.version>2.0.0.0</org.hamcrest.version>
         <org.junit.version>5.8.2</org.junit.version>
         <org.mockito.version>3.3.3</org.mockito.version>
         <org.assertj.version>3.21.0</org.assertj.version>
         <org.slf4j.version>1.7.25</org.slf4j.version>
         <org.projectlombok.version>1.18.24</org.projectlombok.version>
-        <maven.surefire.version>2.22.2</maven.surefire.version>
+        <maven.surefire.version>3.0.0</maven.surefire.version>
         <lombok-maven-plugin.version>1.18.20.0</lombok-maven-plugin.version>
         <maven.javadoc.version>3.4.0</maven.javadoc.version>
     </properties>

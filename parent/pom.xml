@@ -84,6 +84,13 @@
         <dependencies>
             <dependency>
                 <groupId>com.buschmais.jqassistant</groupId>
+                <artifactId>bom</artifactId>
+                <type>pom</type>
+                <scope>import</scope>
+                <version>${com.buschmais.jqassistant.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.buschmais.jqassistant</groupId>
                 <artifactId>jqa-distribution-specification</artifactId>
                 <version>${com.buschmais.jqassistant.version}</version>
                 <type>pom</type>

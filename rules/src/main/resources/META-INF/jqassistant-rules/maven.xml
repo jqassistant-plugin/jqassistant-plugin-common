@@ -8,9 +8,11 @@
         <description>The groupId for jQAssistant plugin Maven projects must follow the pattern 'org.jqassistant.plugin.&lt;project&gt;'.</description>
         <cypher><![CDATA[
             MATCH
-              (project:Maven:Project)-[:CREATES]->(:Artifact)
-            WHERE NOT
+              (project:Maven:Project)
+            WHERE NOT (
               project.groupId = "org.jqassistant.plugin"
+              OR project.groupId starts with "org.jqassistant.plugin."
+            )
             RETURN
               project as InvalidProject
         ]]></cypher>

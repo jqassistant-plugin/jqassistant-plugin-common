@@ -11,7 +11,7 @@
             MATCH
               (it:Test:Class)-[:EXTENDS*]->(abstractBaseClass:Type)
             WHERE
-              NOT exists(it.abstract)
+              it.abstract IS NOT NULL
               AND abstractBaseClass.fqn in [
                 "com.buschmais.jqassistant.plugin.common.test.AbstractPluginIT",
                 "com.buschmais.jqassistant.plugin.java.test.AbstractJavaPluginIT"

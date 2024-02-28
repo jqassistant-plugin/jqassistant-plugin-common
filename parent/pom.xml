@@ -14,6 +14,17 @@
     <description>Parent POM for jQAssistant for plugin projects.</description>
     <packaging>pom</packaging>
 
+    <!--
+<com.buschmais.xo.version>2.2.2</com.buschmais.xo.version>
+<caffeine.version>3.1.6</caffeine.version>
+<org.hamcrest.version>2.0.0.0</org.hamcrest.version>
+<org.junit.version>5.8.2</org.junit.version>
+<org.mockito.version>3.3.3</org.mockito.version>
+<org.assertj.version>3.21.0</org.assertj.version>
+<org.slf4j.version>1.7.36</org.slf4j.version>
+-->
+
+
     <build>
         <plugins>
             <plugin>
@@ -162,43 +173,6 @@
                 <version>${com.buschmais.jqassistant.version}</version>
                 <scope>provided</scope>
             </dependency>
-            <dependency>
-                <groupId>com.buschmais.xo</groupId>
-                <artifactId>xo.api</artifactId>
-                <version>${com.buschmais.xo.version}</version>
-                <scope>provided</scope>
-            </dependency>
-            <dependency>
-                <groupId>com.buschmais.xo</groupId>
-                <artifactId>xo.spi</artifactId>
-                <version>${com.buschmais.xo.version}</version>
-                <scope>provided</scope>
-            </dependency>
-            <dependency>
-                <groupId>com.buschmais.xo</groupId>
-                <artifactId>xo.impl</artifactId>
-                <version>${com.buschmais.xo.version}</version>
-                <scope>provided</scope>
-            </dependency>
-            <dependency>
-                <groupId>org.slf4j</groupId>
-                <artifactId>slf4j-api</artifactId>
-                <version>${org.slf4j.version}</version>
-                <scope>provided</scope>
-            </dependency>
-            <dependency>
-                <groupId>org.projectlombok</groupId>
-                <artifactId>lombok</artifactId>
-                <version>${org.projectlombok.version}</version>
-                <scope>provided</scope>
-            </dependency>
-            <!-- Provides a cache framework for plugins -->
-            <dependency>
-                <groupId>com.github.ben-manes.caffeine</groupId>
-                <artifactId>caffeine</artifactId>
-                <version>${caffeine.version}</version>
-                <scope>provided</scope>
-            </dependency>
             <!-- jQA test dependencies -->
             <dependency>
                 <groupId>com.buschmais.jqassistant.neo4j</groupId>
@@ -240,73 +214,6 @@
                 <version>${com.buschmais.jqassistant.version}</version>
                 <scope>test</scope>
             </dependency>
-            <!-- To be removed if jQA test supports switching Neo4j version depending on JDK -->
-            <dependency>
-                <groupId>org.neo4j</groupId>
-                <artifactId>neo4j</artifactId>
-                <version>${org.neo4j.version}</version>
-                <scope>test</scope>
-                <exclusions>
-                    <exclusion>
-                        <groupId>org.slf4j</groupId>
-                        <artifactId>slf4j-nop</artifactId>
-                    </exclusion>
-                    <exclusion>
-                        <artifactId>commons-logging</artifactId>
-                        <groupId>commons-logging</groupId>
-                    </exclusion>
-                </exclusions>
-            </dependency>
-            <dependency>
-                <groupId>org.neo4j.community</groupId>
-                <artifactId>it-test-support</artifactId>
-                <version>${org.neo4j.version}</version>
-                <scope>test</scope>
-                <exclusions>
-                    <exclusion>
-                        <groupId>org.junit.jupiter</groupId>
-                        <artifactId>*</artifactId>
-                    </exclusion>
-                    <exclusion>
-                        <groupId>org.hamcrest</groupId>
-                        <artifactId>*</artifactId>
-                    </exclusion>
-                    <exclusion>
-                        <artifactId>mockito-core</artifactId>
-                        <groupId>org.mockito</groupId>
-                    </exclusion>
-                    <exclusion>
-                        <artifactId>assertj-core</artifactId>
-                        <groupId>org.assertj</groupId>
-                    </exclusion>
-                    <exclusion>
-                        <artifactId>awaitility</artifactId>
-                        <groupId>org.awaitility</groupId>
-                    </exclusion>
-                </exclusions>
-            </dependency>
         </dependencies>
     </dependencyManagement>
-
-    <profiles>
-        <profile>
-            <id>neo4jv4</id>
-            <activation>
-                <jdk>11</jdk>
-            </activation>
-            <properties>
-                <org.neo4j.version>${org.neo4j_4x.version}</org.neo4j.version>
-            </properties>
-        </profile>
-        <profile>
-            <id>neo4jv5</id>
-            <activation>
-                <jdk>[17,)</jdk>
-            </activation>
-            <properties>
-                <org.neo4j.version>${org.neo4j_5x.version}</org.neo4j.version>
-            </properties>
-        </profile>
-    </profiles>
-
 </project>

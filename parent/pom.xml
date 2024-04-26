@@ -15,22 +15,6 @@
     <packaging>pom</packaging>
 
     <build>
-        <resources>
-            <resource>
-                <directory>${project.basedir}/src/main/resources</directory>
-                <includes>
-                    <include>META-INF/jqassistant-plugin.xml</include>
-                </includes>
-                <filtering>true</filtering>
-            </resource>
-            <resource>
-                <directory>${project.basedir}/src/main/resources</directory>
-                <excludes>
-                    <exclude>META-INF/jqassistant-plugin.xml</exclude>
-                </excludes>
-                <filtering>true</filtering>
-            </resource>
-        </resources>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -58,12 +42,14 @@
                 <configuration>
                     <yaml>
                         jqassistant:
-                          analyze:
-                            groups:
-                              - jqassistant-plugin:Default
                           scan:
                             properties:
                               xml.file.include: /META-INF/jqassistant-plugin.xml
+                          analyze:
+                            rule:
+                             default-concept-severity: INFO
+                            groups:
+                             - jqassistant-plugin:Default
                     </yaml>
                 </configuration>
                 <dependencies>

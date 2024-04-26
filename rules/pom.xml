@@ -18,18 +18,7 @@
             <plugin>
                 <groupId>com.buschmais.jqassistant</groupId>
                 <artifactId>jqassistant-maven-plugin</artifactId>
-                <configuration>
-                    <yaml>
-                        jqassistant:
-                          analyze:
-                            groups:
-                              - jqassistant-plugin:Default
-                          maven:
-                            reuse-store: false
-                    </yaml>
-                </configuration>
             </plugin>
         </plugins>
     </build>
-
 </project>

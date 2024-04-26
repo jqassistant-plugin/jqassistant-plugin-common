@@ -1,13 +1,29 @@
-<jqa:jqassistant-rules xmlns:jqa="http://schema.jqassistant.org/rule/v1.10">
+<jqa:jqassistant-rules xmlns:jqa="http://schema.jqassistant.org/rule/v2.2">
 
     <group id="jqassistant-plugin-plugin:Default">
         <includeConstraint refId="jqassistant-plugin-plugin:*"/>
     </group>
 
+    <constraint id="jqassistant-plugin-plugin:PluginDescriptorShouldProvideVersion" severity="minor">
+        <requiresConcept refId="jqassistant-plugin-plugin:PluginDescriptor"/>
+        <description>The jQAssistant XML Plugin descriptor ("/META-INF/jqassistant-plugin.xml") should provide a "version" attribute for its root element.</description>
+        <cypher><![CDATA[
+            MATCH
+              (artifact:Artifact)-[:CONTAINS]->(pluginDescriptor:PluginDescriptor)-[:HAS_ROOT_ELEMENT]->(rootElement:Xml:Element)
+            WHERE NOT
+              (rootElement)-[:HAS_ATTRIBUTE]->(:Xml:Attribute{name:"version"})
+            RETURN
+              artifact as Plugin, pluginDescriptor as Descriptor
+            ORDER BY
+              artifact.fqn
+        ]]></cypher>
+    </constraint>
+
     <constraint id="jqassistant-plugin-plugin:Neo4jUserFunctionsMustBeRegistered">
         <requiresConcept refId="neo4j:UserFunction"/>
         <requiresConcept refId="jqassistant-plugin-plugin:PluginRegistersUserFunction"/>
         <description>Types declaring Neo4j user functions must be registered.</description>
+        <deprecated>Neo4j functions or procedures should be registered as dedicated store plugins in the '.jqassistant.yml' configuration.</deprecated>
         <cypher><![CDATA[
             MATCH
               (type:Type)-[:DECLARES]->(userFunction:UserFunction)
@@ -22,6 +38,7 @@
         <requiresConcept refId="neo4j:Procedure"/>
         <requiresConcept refId="jqassistant-plugin-plugin:PluginRegistersProcedure"/>
         <description>Types declaring Neo4j procedures must be registered.</description>
+        <deprecated>Neo4j functions or procedures should be registered as dedicated store plugins in the '.jqassistant.yml' configuration.</deprecated>
         <cypher><![CDATA[
             MATCH
               (type:Type)-[:DECLARES]->(procedure:Procedure)
@@ -49,6 +66,7 @@
         <description>Creates a `REGISTERS` relation between all procedure class elements of the jQAssistant plugin
             descriptor to the matching Java type.
         </description>
+        <deprecated>Neo4j functions or procedures should be registered as dedicated store plugins in the '.jqassistant.yml' configuration.</deprecated>
         <cypher><![CDATA[
             MATCH
               (pluginDescriptor:jQAssistant:PluginDescriptor),
@@ -72,6 +90,7 @@
         <description>Creates a `REGISTERS` relation between all function class elements of the jQAssistant plugin
             descriptor to the matching Java type.
         </description>
+        <deprecated>Neo4j functions or procedures should be registered as dedicated store plugins in the '.jqassistant.yml' configuration.</deprecated>
         <cypher><![CDATA[
             MATCH
               (pluginDescriptor:jQAssistant:PluginDescriptor),

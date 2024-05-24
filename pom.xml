@@ -19,6 +19,7 @@
         <org.mapstruct.version>1.5.5.Final</org.mapstruct.version>
         <lombok-maven-plugin.version>1.18.20.0</lombok-maven-plugin.version>
         <maven-surefire-plugin.version>3.1.2</maven-surefire-plugin.version>
+        <maven-invoker-plugin.version>3.6.1.</maven-invoker-plugin.version>
         <maven-javadoc-plugin.version>3.4.0</maven-javadoc-plugin.version>
         <maven-source-plugin.version>3.3.0</maven-source-plugin.version>
         <maven-compiler-plugin.version>3.11.0</maven-compiler-plugin.version>
@@ -232,6 +233,34 @@
                                     <include>**/*IT.java</include>
                                 </includes>
                             </configuration>
+                        </execution>
+                    </executions>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-invoker-plugin</artifactId>
+                    <version>${maven-invoker-plugin.version}</version>
+                    <configuration>
+                        <cloneProjectsTo>${project.build.directory}/it</cloneProjectsTo>
+                        <localRepositoryPath>${project.build.directory}/it-repo</localRepositoryPath>
+                        <mergeUserSettings>false</mergeUserSettings>
+                        <properties>
+                            <maven.compiler.release>11</maven.compiler.release>
+                        </properties>
+                        <goals>
+                            <goal>verify -e</goal>
+                        </goals>
+                        <streamLogs>true</streamLogs>
+                        <postBuildHookScript>verify</postBuildHookScript>
+                        <writeJunitReport>true</writeJunitReport>
+                    </configuration>
+                    <executions>
+                        <execution>
+                            <id>integration-test</id>
+                            <goals>
+                                <goal>install</goal>
+                                <goal>run</goal>
+                            </goals>
                         </execution>
                     </executions>
                 </plugin>

@@ -13,19 +13,21 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <com.buschmais.jqassistant.version>2.3.0-M3</com.buschmais.jqassistant.version>
+        <com.buschmais.jqassistant.version>2.3.0-SNAPSHOT</com.buschmais.jqassistant.version>
         <org.slf4j.version>1.7.36</org.slf4j.version>
         <org.projectlombok.version>1.18.32</org.projectlombok.version>
         <org.mapstruct.version>1.5.5.Final</org.mapstruct.version>
         <lombok-maven-plugin.version>1.18.20.0</lombok-maven-plugin.version>
         <maven-surefire-plugin.version>3.1.2</maven-surefire-plugin.version>
-        <maven-invoker-plugin.version>3.6.1.</maven-invoker-plugin.version>
+        <maven-invoker-plugin.version>3.6.1</maven-invoker-plugin.version>
         <maven-javadoc-plugin.version>3.4.0</maven-javadoc-plugin.version>
         <maven-source-plugin.version>3.3.0</maven-source-plugin.version>
         <maven-compiler-plugin.version>3.11.0</maven-compiler-plugin.version>
         <maven-gpg-plugin.version>1.6</maven-gpg-plugin.version>
         <cyclonedx-maven-plugin.version>2.8.0</cyclonedx-maven-plugin.version>
         <nexus-staging-maven-plugin.version>1.6.13</nexus-staging-maven-plugin.version>
+        <!-- integration tests -->
+        <it.jqassistant.store.uri>memory:///</it.jqassistant.store.uri>
     </properties>
 
     <organization>
@@ -216,6 +218,10 @@
                         <includes>
                             <include>**/*Test.java</include>
                         </includes>
+                        <systemPropertyVariables>
+                            <!-- default store to use for Integration tests -->
+                            <jqassistant.store.uri>${it.jqassistant.store.uri}</jqassistant.store.uri>
+                        </systemPropertyVariables>
                     </configuration>
                 </plugin>
                 <plugin>
@@ -232,6 +238,10 @@
                                 <includes>
                                     <include>**/*IT.java</include>
                                 </includes>
+                                <systemPropertyVariables>
+                                    <!-- default store to use for Integration tests -->
+                                    <jqassistant.store.uri>${it.jqassistant.store.uri}</jqassistant.store.uri>
+                                </systemPropertyVariables>
                             </configuration>
                         </execution>
                     </executions>
@@ -359,20 +369,16 @@
             </build>
         </profile>
         <profile>
-            <id>remote</id>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-failsafe-plugin</artifactId>
-                        <configuration>
-                            <systemPropertyVariables>
-                                <jqassistant.store.uri>neo4j://localhost:7687</jqassistant.store.uri>
-                            </systemPropertyVariables>
-                        </configuration>
-                    </plugin>
-                </plugins>
-            </build>
+            <id>it-store-remote</id>
+            <properties>
+                <it.jqassistant.store.uri>neo4j://localhost:7687</it.jqassistant.store.uri>
+            </properties>
+        </profile>
+        <profile>
+            <id>it-store-file</id>
+            <properties>
+                <it.jqassistant.store.uri>file:${project.build.directory}/jqassistant/test-store</it.jqassistant.store.uri>
+            </properties>
         </profile>
         <profile>
             <id>sonar</id>

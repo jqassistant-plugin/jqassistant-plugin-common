@@ -1,0 +1,14 @@
+<v1:jqassistant-plugin xmlns:v1="http://schema.jqassistant.org/plugin/v2.2"
+    id="jqa.plugin.common.rules"
+    name="jQAssistant Plugin Rules"
+    version="${project.version}">
+    <description>Provides rules for jQAssistant plugin projects.</description>
+    <rules>
+        <resource>default.xml</resource>
+        <resource>maven.xml</resource>
+        <resource>package.xml</resource>
+        <resource>test.xml</resource>
+        <resource>plugin.xml</resource>
+        <resource>neo4j.xml</resource>
+    </rules>
+</v1:jqassistant-plugin>

@@ -1,0 +1,38 @@
+<jqa:jqassistant-rules xmlns:jqa="http://schema.jqassistant.org/rule/v1.10">
+
+    <group id="neo4j:Default">
+        <includeConstraint refId="neo4j:*"/>
+    </group>
+
+    <concept id="neo4j:UserFunction">
+        <description>Labels all types annotated with "@org.neo4j.procedure.UserFunction" with `Neo4j` and
+            `UserFunction`.
+        </description>
+        <cypher><![CDATA[
+            MATCH
+              (userFunction:Method)-[:ANNOTATED_BY]->()-[:OF_TYPE]->(annotationType:Type)
+            WHERE
+              annotationType.fqn = "org.neo4j.procedure.UserFunction"
+            SET
+              userFunction:Neo4j:UserFunction
+            RETURN
+              userFunction as UserFunction
+        ]]></cypher>
+    </concept>
+
+    <concept id="neo4j:Procedure">
+        <description>Labels all types annotated with "@org.neo4j.procedure.Procedure" with `Neo4j` and `Procedure`.
+        </description>
+        <cypher><![CDATA[
+            MATCH
+              (procedure:Method)-[:ANNOTATED_BY]->()-[:OF_TYPE]->(annotationType:Type)
+            WHERE
+              annotationType.fqn = "org.neo4j.procedure.Procedure"
+            SET
+              procedure:Neo4j:Procedure
+            RETURN
+              procedure as Procedure
+        ]]></cypher>
+    </concept>
+
+</jqa:jqassistant-rules>

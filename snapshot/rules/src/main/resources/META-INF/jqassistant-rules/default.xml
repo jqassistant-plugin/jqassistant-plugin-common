@@ -1,0 +1,10 @@
+<jqa:jqassistant-rules xmlns:jqa="http://schema.jqassistant.org/rule/v1.10">
+
+    <group id="jqassistant-plugin:Default">
+        <includeGroup refId="jqassistant-plugin-maven:Default"/>
+        <includeGroup refId="jqassistant-plugin-package:Default"/>
+        <includeGroup refId="jqassistant-plugin-test:Default"/>
+        <includeGroup refId="jqassistant-plugin-plugin:Default"/>
+    </group>
+
+</jqa:jqassistant-rules>

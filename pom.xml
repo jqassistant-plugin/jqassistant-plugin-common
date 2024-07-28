@@ -28,6 +28,12 @@
         <nexus-staging-maven-plugin.version>1.6.13</nexus-staging-maven-plugin.version>
         <!-- integration tests -->
         <it.jqassistant.store.uri>memory:///</it.jqassistant.store.uri>
+        <!-- Sonar -->
+        <sonar.host.url>https://sonarcloud.io</sonar.host.url>
+        <sonar.organization>jqassistant-plugin</sonar.organization>
+        <sonar.moduleKey>${project.artifactId}</sonar.moduleKey>
+        <sonar.login>${env.SONARCLOUD_LOGIN}</sonar.login>
+        <sonar.coverage.jacoco.xmlReportPaths>${project.build.directory}/site/jacoco/jacoco.xml</sonar.coverage.jacoco.xmlReportPaths>
     </properties>
 
     <organization>
@@ -277,7 +283,7 @@
                 <plugin>
                     <groupId>org.jacoco</groupId>
                     <artifactId>jacoco-maven-plugin</artifactId>
-                    <version>0.8.10</version>
+                    <version>0.8.12</version>
                 </plugin>
                 <plugin>
                     <groupId>org.projectlombok</groupId>
@@ -379,38 +385,6 @@
             <properties>
                 <it.jqassistant.store.uri>file:${project.build.directory}/jqassistant/test-store</it.jqassistant.store.uri>
             </properties>
-        </profile>
-        <profile>
-            <id>sonar</id>
-            <activation>
-                <property>
-                    <name>performRelease</name>
-                    <value>true</value>
-                </property>
-            </activation>
-            <properties>
-                <sonar.host.url>https://sonarcloud.io</sonar.host.url>
-                <sonar.organization>jqassistant-plugin</sonar.organization>
-                <sonar.moduleKey>${project.artifactId}</sonar.moduleKey>
-                <sonar.login>${env.SONARCLOUD_LOGIN}</sonar.login>
-                <sonar.coverage.jacoco.xmlReportPaths>${project.build.directory}/site/jacoco/jacoco.xml</sonar.coverage.jacoco.xmlReportPaths>
-            </properties>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>org.sonarsource.scanner.maven</groupId>
-                        <artifactId>sonar-maven-plugin</artifactId>
-                        <executions>
-                            <execution>
-                                <phase>verify</phase>
-                                <goals>
-                                    <goal>sonar</goal>
-                                </goals>
-                            </execution>
-                        </executions>
-                    </plugin>
-                </plugins>
-            </build>
         </profile>
         <profile>
             <id>release</id>

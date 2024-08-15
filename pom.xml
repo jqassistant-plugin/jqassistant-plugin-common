@@ -13,8 +13,8 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <com.buschmais.jqassistant.version>2.4.0-RC1</com.buschmais.jqassistant.version>
-        <org.slf4j.version>1.7.36</org.slf4j.version>
+        <com.buschmais.jqassistant.version>2.4.0</com.buschmais.jqassistant.version>
+        <org.slf4j.version>2.0.14</org.slf4j.version>
         <org.projectlombok.version>1.18.34</org.projectlombok.version>
         <org.mapstruct.version>1.5.5.Final</org.mapstruct.version>
         <lombok-maven-plugin.version>1.18.20.0</lombok-maven-plugin.version>

@@ -19,7 +19,8 @@
         <org.mapstruct.version>1.5.5.Final</org.mapstruct.version>
         <lombok-maven-plugin.version>1.18.20.0</lombok-maven-plugin.version>
         <maven-surefire-plugin.version>3.3.1</maven-surefire-plugin.version>
-        <maven-invoker-plugin.version>3.7.0</maven-invoker-plugin.version>
+        <maven-invoker-plugin.version>3.8.0</maven-invoker-plugin.version>
+        <maven-invoker-groovy.version>4.0.23</maven-invoker-groovy.version>
         <maven-javadoc-plugin.version>3.8.0</maven-javadoc-plugin.version>
         <maven-source-plugin.version>3.3.1</maven-source-plugin.version>
         <maven-compiler-plugin.version>3.13.0</maven-compiler-plugin.version>
@@ -279,6 +280,18 @@
                             </goals>
                         </execution>
                     </executions>
+                    <dependencies>
+                        <dependency>
+                            <groupId>org.apache.groovy</groupId>
+                            <artifactId>groovy</artifactId>
+                            <version>${maven-invoker-groovy.version}</version>
+                        </dependency>
+                        <dependency>
+                            <groupId>org.apache.groovy</groupId>
+                            <artifactId>groovy-xml</artifactId>
+                            <version>${maven-invoker-groovy.version}</version>
+                        </dependency>
+                    </dependencies>
                 </plugin>
                 <plugin>
                     <groupId>org.jacoco</groupId>

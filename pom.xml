@@ -13,7 +13,7 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <com.buschmais.jqassistant.version>2.5.0</com.buschmais.jqassistant.version>
+        <com.buschmais.jqassistant.version>2.6.0-SNAPSHOT</com.buschmais.jqassistant.version>
         <org.slf4j.version>2.0.14</org.slf4j.version>
         <org.projectlombok.version>1.18.34</org.projectlombok.version>
         <org.mapstruct.version>1.5.5.Final</org.mapstruct.version>

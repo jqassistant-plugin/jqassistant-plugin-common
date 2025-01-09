@@ -19,7 +19,6 @@
     <url>https://github.com/jqassistant-plugin/jqassistant-plugin-common</url>
 
     <properties>
-        <jqassistant.skip>true</jqassistant.skip>
         <!-- Sonar -->
         <sonar.organization>jqassistant-plugin</sonar.organization>
         <sonar.projectKey>jqassistant-plugin_jqassistant-plugin-common</sonar.projectKey>

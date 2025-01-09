@@ -22,7 +22,7 @@
         <jqassistant.skip>true</jqassistant.skip>
         <!-- Sonar -->
         <sonar.organization>jqassistant-plugin</sonar.organization>
-        <sonar.moduleKey>${project.artifactId}</sonar.moduleKey>
+        <sonar.projectKey>jqassistant-plugin_jqassistant-plugin-common</sonar.projectKey>
     </properties>
 
     <organization>

@@ -3,12 +3,12 @@
   <context>
     <build>
       <name>jQAssistant Plugin Common Parent</name>
-      <timestamp>2026-08-28T15:25:15.064Z</timestamp>
+      <timestamp>2026-09-20T09:22:55.854Z</timestamp>
       <properties></properties>
     </build>
   </context>
-  <group id="jqassistant-plugin:Default" date="2026-08-28T15:26:06">
-    <group id="jqassistant-plugin-maven:Default" date="2026-08-28T15:26:07">
+  <group id="jqassistant-plugin:Default" date="2026-09-20T09:23:31">
+    <group id="jqassistant-plugin-maven:Default" date="2026-09-20T09:23:31">
       <constraint id="jqassistant-plugin-maven:GroupId">
         <description>The groupId for jQAssistant plugin Maven projects must follow the pattern 'org.jqassistant.plugin.&lt;project&gt;'.</description>
         <verificationResult>
@@ -18,7 +18,7 @@
         </verificationResult>
         <status level="2">success</status>
         <severity level="2">major</severity>
-        <duration>144</duration>
+        <duration>140</duration>
       </constraint>
       <concept id="jqassistant-plugin-maven:ParentProject" abstract="false">
         <description>Labels all Maven projects which declare "org.jqassistant.plugin:parent" as parent module with "Parent".</description>
@@ -29,7 +29,7 @@
         </verificationResult>
         <status level="2">success</status>
         <severity level="4">info</severity>
-        <duration>206</duration>
+        <duration>244</duration>
       </concept>
       <constraint id="jqassistant-plugin-maven:MavenModulesMustUseParentGroupId">
         <description>All Maven projects must define the same groupId as the parent of the plugin project.</description>
@@ -40,7 +40,7 @@
         </verificationResult>
         <status level="2">success</status>
         <severity level="2">major</severity>
-        <duration>182</duration>
+        <duration>221</duration>
         <required-concept id="jqassistant-plugin-maven:ParentProject">
           <status level="2">success</status>
         </required-concept>
@@ -54,7 +54,7 @@
         </verificationResult>
         <status level="2">success</status>
         <severity level="2">major</severity>
-        <duration>134</duration>
+        <duration>145</duration>
         <required-concept id="jqassistant-plugin-maven:ParentProject">
           <status level="2">success</status>
         </required-concept>
@@ -68,7 +68,7 @@
         </verificationResult>
         <status level="2">success</status>
         <severity level="2">major</severity>
-        <duration>167</duration>
+        <duration>142</duration>
         <required-concept id="jqassistant-plugin-maven:ParentProject">
           <status level="2">success</status>
         </required-concept>
@@ -82,14 +82,14 @@
         </verificationResult>
         <status level="2">success</status>
         <severity level="2">major</severity>
-        <duration>234</duration>
+        <duration>242</duration>
         <required-concept id="jqassistant-plugin-maven:ParentProject">
           <status level="2">success</status>
         </required-concept>
       </constraint>
-      <duration>1360</duration>
+      <duration>1416</duration>
     </group>
-    <group id="jqassistant-plugin-test:Default" date="2026-08-28T15:26:08">
+    <group id="jqassistant-plugin-test:Default" date="2026-09-20T09:23:32">
       <concept id="junit5:ParameterizedTestMethod" abstract="false">
         <description>Finds all test methods (i.e. annotated with "@org.junit.jupiter.api.ParameterizedTest") and
 labels them with "Test", "Parameterized", and "Junit5".</description>
@@ -100,7 +100,7 @@ labels them with "Test", "Parameterized", and "Junit5".</description>
         </verificationResult>
         <status level="2">success</status>
         <severity level="4">info</severity>
-        <duration>69</duration>
+        <duration>79</duration>
       </concept>
       <concept id="junit5:TestMethod" abstract="false">
         <description>Finds all test methods (i.e. annotated with "@org.junit.jupiter.api.Test") and
@@ -112,7 +112,7 @@ labels them with "Test" and "Junit5".</description>
         </verificationResult>
         <status level="2">success</status>
         <severity level="4">info</severity>
-        <duration>72</duration>
+        <duration>69</duration>
       </concept>
       <concept id="junit5:TestTemplateMethod" abstract="false">
         <description>Labels all methods annotated by "@org.junit.jupiter.api.TestTemplate"
@@ -124,7 +124,7 @@ with "Junit5", "Test" and "Template".</description>
         </verificationResult>
         <status level="2">success</status>
         <severity level="4">info</severity>
-        <duration>100</duration>
+        <duration>96</duration>
       </concept>
       <concept id="junit5:RepeatedTestMethod" abstract="false">
         <description>Finds all test methods (i.e. annotated with "@org.junit.jupiter.api.RepeatedTest") and
@@ -136,7 +136,7 @@ labels them with "Test", "Repeated", and "Junit5".</description>
         </verificationResult>
         <status level="2">success</status>
         <severity level="4">info</severity>
-        <duration>66</duration>
+        <duration>67</duration>
       </concept>
       <concept id="junit5:TestClass" abstract="false">
         <description>Labels all classes containing test methods with "Test" and "Junit5".</description>
@@ -147,7 +147,7 @@ labels them with "Test", "Repeated", and "Junit5".</description>
         </verificationResult>
         <status level="2">success</status>
         <severity level="4">info</severity>
-        <duration>140</duration>
+        <duration>146</duration>
         <required-concept id="junit5:ParameterizedTestMethod">
           <status level="2">success</status>
         </required-concept>
@@ -170,7 +170,7 @@ labels them with "Test", "Repeated", and "Junit5".</description>
         </verificationResult>
         <status level="2">success</status>
         <severity level="4">info</severity>
-        <duration>131</duration>
+        <duration>153</duration>
         <required-concept id="junit5:TestClass">
           <status level="2">success</status>
         </required-concept>
@@ -184,14 +184,14 @@ labels them with "Test", "Repeated", and "Junit5".</description>
         </verificationResult>
         <status level="2">success</status>
         <severity level="2">major</severity>
-        <duration>32</duration>
+        <duration>31</duration>
         <required-concept id="jqassistant-plugin-test:IT">
           <status level="2">success</status>
         </required-concept>
       </constraint>
-      <duration>673</duration>
+      <duration>701</duration>
     </group>
-    <group id="jqassistant-plugin-plugin:Default" date="2026-08-28T15:26:09">
+    <group id="jqassistant-plugin-plugin:Default" date="2026-09-20T09:23:33">
       <concept id="neo4j:Procedure" abstract="false">
         <description>Labels all types annotated with "@org.neo4j.procedure.Procedure" with `Neo4j` and `Procedure`.</description>
         <verificationResult>
@@ -201,7 +201,7 @@ labels them with "Test", "Repeated", and "Junit5".</description>
         </verificationResult>
         <status level="2">success</status>
         <severity level="4">info</severity>
-        <duration>53</duration>
+        <duration>60</duration>
       </concept>
       <concept id="jqassistant-plugin-plugin:PluginDescriptor" abstract="false">
         <description>Labels jQAssistant plugin descriptor files with `jQAssistant` and `PluginDescriptor`.</description>
@@ -211,18 +211,18 @@ labels them with "Test", "Repeated", and "Junit5".</description>
             <column>PluginDescriptor</column>
           </columns>
           <rows count="1">
-            <row key="d9d5793ce21235b73b160aebd2ec5393b5de65d5d788ba3fea9c1ac2bbb22056">
+            <row key="34b3c574cbe8d253b32841afc92aa6621d65c7313f9647d90b9dd8814059322d">
               <column name="Artifact">
                 <element language="Generic">Artifact</element>
-                <source fileName="/home/runner/.m2/repository/org/jqassistant/plugin/rules/2.10.0-SNAPSHOT/rules-2.10.0-SNAPSHOT.jar"></source>
+                <source path="rules/target/classes" fileName="/rules/target/classes"></source>
                 <value>org.jqassistant.plugin:rules:jar:2.10.0-SNAPSHOT</value>
               </column>
               <column name="PluginDescriptor">
                 <element language="Generic">File</element>
-                <source fileName="/META-INF/jqassistant-plugin.xml">
-                  <parent fileName="/home/runner/.m2/repository/org/jqassistant/plugin/rules/2.10.0-SNAPSHOT/rules-2.10.0-SNAPSHOT.jar" group="org.jqassistant.plugin" name="rules" type="jar" version="2.10.0-SNAPSHOT"></parent>
+                <source path="rules/target/classes/META-INF/jqassistant-plugin.xml" fileName="/META-INF/jqassistant-plugin.xml">
+                  <parent path="rules/target/classes" fileName="/rules/target/classes" group="org.jqassistant.plugin" name="rules" type="jar" version="2.10.0-SNAPSHOT"></parent>
                 </source>
-                <value>/META-INF/jqassistant-plugin.xml</value>
+                <value>rules/target/classes/META-INF/jqassistant-plugin.xml</value>
               </column>
               <status level="2">success</status>
             </row>
@@ -235,7 +235,7 @@ labels them with "Test", "Repeated", and "Junit5".</description>
         </verificationResult>
         <status level="2">success</status>
         <severity level="4">info</severity>
-        <duration>95</duration>
+        <duration>86</duration>
       </concept>
       <concept id="jqassistant-plugin-plugin:PluginRegistersProcedure" abstract="false">
         <description>Creates a `REGISTERS` relation between all procedure class elements of the jQAssistant plugin
@@ -247,7 +247,7 @@ labels them with "Test", "Repeated", and "Junit5".</description>
         </verificationResult>
         <status level="2">success</status>
         <severity level="4">info</severity>
-        <duration>269</duration>
+        <duration>274</duration>
         <required-concept id="jqassistant-plugin-plugin:PluginDescriptor">
           <status level="2">success</status>
         </required-concept>
@@ -261,7 +261,7 @@ labels them with "Test", "Repeated", and "Junit5".</description>
         </verificationResult>
         <status level="2">success</status>
         <severity level="2">major</severity>
-        <duration>57</duration>
+        <duration>60</duration>
         <required-concept id="neo4j:Procedure">
           <status level="2">success</status>
         </required-concept>
@@ -279,7 +279,7 @@ labels them with "Test", "Repeated", and "Junit5".</description>
         </verificationResult>
         <status level="2">success</status>
         <severity level="4">info</severity>
-        <duration>48</duration>
+        <duration>55</duration>
       </concept>
       <concept id="jqassistant-plugin-plugin:PluginRegistersUserFunction" abstract="false">
         <description>Creates a `REGISTERS` relation between all function class elements of the jQAssistant plugin
@@ -291,7 +291,7 @@ labels them with "Test", "Repeated", and "Junit5".</description>
         </verificationResult>
         <status level="2">success</status>
         <severity level="4">info</severity>
-        <duration>151</duration>
+        <duration>212</duration>
         <required-concept id="jqassistant-plugin-plugin:PluginDescriptor">
           <status level="2">success</status>
         </required-concept>
@@ -305,7 +305,7 @@ labels them with "Test", "Repeated", and "Junit5".</description>
         </verificationResult>
         <status level="2">success</status>
         <severity level="2">major</severity>
-        <duration>45</duration>
+        <duration>58</duration>
         <required-concept id="neo4j:UserFunction">
           <status level="2">success</status>
         </required-concept>
@@ -322,14 +322,14 @@ labels them with "Test", "Repeated", and "Junit5".</description>
         </verificationResult>
         <status level="2">success</status>
         <severity level="3">minor</severity>
-        <duration>164</duration>
+        <duration>201</duration>
         <required-concept id="jqassistant-plugin-plugin:PluginDescriptor">
           <status level="2">success</status>
         </required-concept>
       </constraint>
-      <duration>951</duration>
+      <duration>1073</duration>
     </group>
-    <group id="jqassistant-plugin-package:Default" date="2026-08-28T15:26:10">
+    <group id="jqassistant-plugin-package:Default" date="2026-09-20T09:23:34">
       <concept id="java:GeneratedLombokType" abstract="false">
         <description>Labels types generated by Lombok as 'Generated' (requires 'lombok.addLombokGeneratedAnnotation=true' in 'lombok.config').</description>
         <result>
@@ -352,7 +352,7 @@ labels them with "Test", "Repeated", and "Junit5".</description>
         </verificationResult>
         <status level="2">success</status>
         <severity level="4">info</severity>
-        <duration>56</duration>
+        <duration>61</duration>
       </concept>
       <concept id="java:GeneratedType" abstract="false">
         <description>Reports the count of types labeled with `Generated`, grouped by containing artifact.</description>
@@ -363,7 +363,7 @@ labels them with "Test", "Repeated", and "Junit5".</description>
         </verificationResult>
         <status level="2">success</status>
         <severity level="4">info</severity>
-        <duration>1</duration>
+        <duration>0</duration>
         <providing-concept id="java:GeneratedLombokType">
           <status level="2">success</status>
         </providing-concept>
@@ -377,13 +377,13 @@ labels them with "Test", "Repeated", and "Junit5".</description>
         </verificationResult>
         <status level="2">success</status>
         <severity level="2">major</severity>
-        <duration>100</duration>
+        <duration>119</duration>
         <required-concept id="java:GeneratedType">
           <status level="2">success</status>
         </required-concept>
       </constraint>
-      <duration>181</duration>
+      <duration>203</duration>
     </group>
-    <duration>183</duration>
+    <duration>207</duration>
   </group>
 </jqassistant-report>
